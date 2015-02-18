@@ -1,0 +1,152 @@
+<!Doctype html>
+<html>
+<head>
+<title>Chart in CSS</title>
+<style>
+* {	padding: 0; margin: 0; vertical-align: top; }
+
+body {
+	font: 18px/1.5em "proxima-nova", Helvetica, Arial, sans-serif;
+}
+
+a {	color: #069; }
+a:hover { color: #28b; }
+
+h2 {
+	margin-top: 15px;
+	font: normal 32px "omnes-pro", Helvetica, Arial, sans-serif;
+}
+
+h3 {
+	margin-left: 30px;
+	font: normal 26px "omnes-pro", Helvetica, Arial, sans-serif;
+	color: #666;
+}
+
+p {
+	margin-top: 10px;
+}
+
+
+#content {
+	width: 600px;
+	margin: 0 auto;
+	padding: 10px;
+}
+
+
+.demo-container {
+	width: 600px;
+	height: 600px;
+	padding: 20px 15px 15px 15px;
+	margin: 15px auto 30px auto;
+	background: #fff;
+}
+
+.pie-link
+{
+    color:White;
+    font-weight:bold;
+}
+.demo-placeholder {
+	width: 100%;
+	height: 100%;
+	font-size: 14px;
+	line-height: 1.2em;
+}
+
+.legend table {
+	border-spacing: 5px;
+}
+</style>
+<script src="http://code.jquery.com/jquery-1.9.1.js"></script>
+<script type='text/javascript' src="jquery.flot.js"></script>
+<script type='text/javascript' src="jquery.flot.pie.js"></script>
+<script>
+	    $(function () {
+	        var data = [], series = 9;
+	            data[0] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 1' href='#'>Link 1</a>",
+	                data: 40
+	            }
+
+	            data[1] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 2' href='#'>Link 2</a>",
+	                data: 40
+	            }
+
+	            data[2] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 3' href='#'>Link 3</a>",
+	                data: 40
+	            }
+
+	            data[3] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 4' href='#'>Link 4</a>",
+	                data: 40
+	            }
+                data[4] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 5' href='#'>Link 5</a>",
+	                data: 40
+	            }
+                data[5] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 6' href='#'>Link 6</a>",
+	                data: 40,
+			color: "#FF0000"
+	            }
+                data[6] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 7' href='#'>Link 7</a>",
+	                data: 40
+	            }
+                data[7] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 8' href='#'>Link 8</a>",
+	                data: 40
+	            }
+                data[8] = {
+	                label: "<a class='pie-link' target='_blank' title='Link 9' href='#'>Link 9</a>",
+	                data: 40
+	            }
+	        //}
+
+	        var placeholder = $("#placeholder");
+
+	        placeholder.unbind();
+
+	        $.plot(placeholder, data, {
+	            series: {
+	                pie: {
+			    innerRadius: {radius:0.3, text:"Sample", color: "#CDCDCD", bgcolor: "yellow"},
+	                    show: true,
+	                    radius: 1,
+	                    startAngle: 1 / 9,
+	                    label: {
+	                        show: true,
+	                        radius: 2 / 3,
+	                        formatter: labelFormatter,
+	                        background: {
+	                            color: "#1d1d1d"
+	                        }
+	                    }
+	                }
+	            },
+	            legend: {
+	                show: false
+	            },
+	            grid: {
+	                hoverable: true,
+	                clickable: true
+	            }
+	        });
+	    });
+	function labelFormatter(label, series) {
+		return "<div style='font-size:14pt; width:106px; text-align:center; padding:2px; color:white; line-height:1;'>" + label + "</div>";
+	}
+
+    </script>
+</head>
+<body>
+	<div id="content">
+		<div class="demo-container">
+			<div id="placeholder" class="demo-placeholder"></div>
+	</div>	
+</div>
+</body></html>
